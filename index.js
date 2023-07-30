@@ -2,7 +2,11 @@ import admin from "firebase-admin";
 import { getMessaging } from "firebase-admin/messaging";
 import express, { json } from "express";
 
-var serviceAccount = require(process.env.GOOGLE_APPLICATION_CREDENTIALS);
+import fs from 'fs';
+import path from 'path';
+
+const serviceAccount = JSON.parse(fs.readFileSync(path.resolve(process.env.GOOGLE_APPLICATION_CREDENTIALS), 'utf8'));
+
 
 const app = express();
 app.use(express.json());
